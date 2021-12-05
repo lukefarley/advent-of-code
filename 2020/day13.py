@@ -1,7 +1,7 @@
 import functools
 import operator
 
-with open("data/day_13_input.txt") as f:
+with open("data/day13.txt") as f:
     s = f.read().split("\n")
     my_time = int(s[0])
     buses = s[1].split(",")

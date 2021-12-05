@@ -1,5 +1,5 @@
 if __name__ == "__main__":
-    f = open("data/day_1_input.txt")
+    f = open("data/day01.txt")
     x = f.readlines()
     x = [int(xi.strip("\n")) for xi in x]
 

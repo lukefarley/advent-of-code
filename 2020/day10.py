@@ -24,7 +24,7 @@ def get_num_paths(options):
 
 
 if __name__ == "__main__":
-    with open("data/day_10_input.txt") as f:
+    with open("data/day10.txt") as f:
         adapters = [int(x.strip("\n")) for x in f.readlines()]
 
     adapters.append(0)

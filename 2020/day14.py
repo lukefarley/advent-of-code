@@ -97,7 +97,7 @@ def apply_instructions2(mem_dict, instructions):
     return mem_dict
 
 
-with open("data/day_14_input.txt") as f:
+with open("data/day14.txt") as f:
     instructions = [
         x.strip().split("\n") for x in f.read().strip().split("mask = ")[1:]
     ]

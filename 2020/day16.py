@@ -16,7 +16,7 @@ def get_criteria(notes):
     return dict(zip(categories, all_vals))
 
 
-with open("data/day_16_input.txt") as f:
+with open("data/day16.txt") as f:
     notes = f.read().strip().split("\n\n")
 
 notes = [section.split("\n") for section in notes]

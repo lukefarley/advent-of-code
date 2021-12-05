@@ -170,7 +170,7 @@ def apply_rules2(chart):
 
 
 if __name__ == "__main__":
-    with open("data/day_11_input.txt") as f:
+    with open("data/day11.txt") as f:
         chart = [x.strip("\n") for x in f.read().strip().split("\n")]
 
     # chart = [x.strip('\n') for x in TEST.strip().split('\n')]

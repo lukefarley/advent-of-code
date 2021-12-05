@@ -63,7 +63,7 @@ def check_passport_vals(p):
 
 
 if __name__ == "__main__":
-    f = open("data/day_4_input.txt")
+    f = open("data/day04.txt")
     passports = [
         p.replace("\n", " ").strip().replace(":", " ") for p in f.read().split("\n\n")
     ]

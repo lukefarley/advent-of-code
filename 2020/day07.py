@@ -40,7 +40,7 @@ def count_bags(bag, bags_dict):
 
 
 if __name__ == "__main__":
-    with open("data/day_7_input.txt") as f:
+    with open("data/day07.txt") as f:
         rules = [x.strip() for x in f.read().strip("\n").split("\n")]
 
     bags_dict = {k: v for d in [parse_rule(r) for r in rules] for k, v in d.items()}

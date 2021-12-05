@@ -28,7 +28,7 @@ def find_rating(diagnostic_report, type):
 
 
 if __name__ == "__main__":
-    with open("data/day3.txt") as f:
+    with open("data/day03.txt") as f:
         diagnostic_report = np.array(
             [[int(z) for z in list(x.strip())] for x in f.readlines()]
         )

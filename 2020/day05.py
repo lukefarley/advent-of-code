@@ -24,7 +24,7 @@ def get_pass_id(bp):
 
 
 if __name__ == "__main__":
-    with open("data/day_5_input.txt", "r") as f:
+    with open("data/day05.txt", "r") as f:
         bps = f.read().splitlines()
 
     ids = [get_pass_id(bp) for bp in bps]

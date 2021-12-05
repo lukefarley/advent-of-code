@@ -2,7 +2,7 @@ import functools
 import operator
 
 
-def get_forest(filepath="data/day_3_input.txt"):
+def get_forest(filepath="data/day03.txt"):
     f = open(filepath)
     forest = f.readlines()
     f.close()

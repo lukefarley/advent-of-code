@@ -17,7 +17,7 @@ def check_password(password: str, part: int = 1):
 
 
 if __name__ == "__main__":
-    f = open("data/day_2_input.txt")
+    f = open("data/day02.txt")
     passwords = f.read().splitlines()
     f.close()
 

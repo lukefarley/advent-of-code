@@ -44,7 +44,7 @@ def play_bingo(board, draws):
 
 
 if __name__ == "__main__":
-    with open("data/day4.txt") as f:
+    with open("data/day04.txt") as f:
         inp = [x.split("\n") for x in f.read().split("\n\n")]
 
     draws = [int(x) for x in inp[0][0].split(",")]

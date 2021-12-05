@@ -49,7 +49,7 @@ class Grid:
 
 
 if __name__ == "__main__":
-    with open("data/day5.txt") as f:
+    with open("data/day05.txt") as f:
         raw_lines = f.read().split("\n")
 
     lines = [Line.from_string(l) for l in raw_lines]

@@ -35,7 +35,7 @@ def perform_action_2(command: str, current_pos: List) -> List:
 
 
 if __name__ == "__main__":
-    with open("data/day2.txt") as f:
+    with open("data/day02.txt") as f:
         commands = [x.strip() for x in f.readlines()]
 
     current_pos = [0, 0]

@@ -2,7 +2,7 @@ import numpy as np
 
 
 if __name__ == "__main__":
-    with open("data/day1.txt") as f:
+    with open("data/day01.txt") as f:
         sonars = [int(x.strip()) for x in f.readlines()]
 
     part1 = sum((np.array(sonars[1:]) - np.array(sonars[:-1])) > 0)

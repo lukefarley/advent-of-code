@@ -42,5 +42,5 @@ def evaluate_all(expr):
     return evaluate2(expr)
 
 
-with open("data/day_18_input.txt") as f:
+with open("data/day18.txt") as f:
     hw = f.read().strip().split("\n")

@@ -15,7 +15,7 @@ def get_next_instruction(code, i):
 
 
 if __name__ == "__main__":
-    with open("data/day_8_input.txt") as f:
+    with open("data/day08.txt") as f:
         code = [x for x in f.read().strip().split("\n")]
 
     instructions = [0]

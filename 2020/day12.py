@@ -106,7 +106,7 @@ class Ship:
         return self
 
 
-with open("data/day_12_input.txt") as f:
+with open("data/day12.txt") as f:
     commands = f.read().strip().split("\n")
 
 # commands = TEST.split("\n")

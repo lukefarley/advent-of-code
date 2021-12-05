@@ -18,7 +18,7 @@ def check_contiguous_sum(target, numbers, window=2):
 
 
 if __name__ == "__main__":
-    with open("data/day_9_input.txt") as f:
+    with open("data/day09.txt") as f:
         numbers = [int(x.strip("\n")) for x in f.readlines()]
 
     # results = []

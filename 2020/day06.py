@@ -12,7 +12,7 @@ def get_common_answers(group):
 
 
 if __name__ == "__main__":
-    with open("data/day_6_input.txt", "r") as f:
+    with open("data/day06.txt", "r") as f:
         print(
             sum([len(set(x.replace("\n", "").strip())) for x in f.read().split("\n\n")])
         )
