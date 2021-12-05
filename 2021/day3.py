@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def calc_gamma(diagnostic_report: np.ndarray) -> np.array:
     ncol = diagnostic_report.shape[1]
 
@@ -9,6 +10,7 @@ def calc_gamma(diagnostic_report: np.ndarray) -> np.array:
             for j in range(ncol)
         ]
     )
+
 
 def calc_epsilon(gamma):
     return 1 - gamma
@@ -30,19 +32,21 @@ if __name__ == "__main__":
         diagnostic_report = np.array(
             [[int(z) for z in list(x.strip())] for x in f.readlines()]
         )
-        
+
     gamma = calc_gamma(diagnostic_report)
-    epsilon = calc_epsilon(gamma)   
+    epsilon = calc_epsilon(gamma)
 
     print(
-        "Part 1:", 
-        int("".join([str(x) for x in list(gamma)]), 2) * int("".join([str(x) for x in list(epsilon)]), 2)
+        "Part 1:",
+        int("".join([str(x) for x in list(gamma)]), 2)
+        * int("".join([str(x) for x in list(epsilon)]), 2),
     )
 
     oxygen = find_rating(diagnostic_report, "oxygen")
     co2 = find_rating(diagnostic_report, "co2")
 
     print(
-        "Part 2:", 
-        int("".join([str(x) for x in list(oxygen)]), 2) * int("".join([str(x) for x in list(co2)]), 2)
+        "Part 2:",
+        int("".join([str(x) for x in list(oxygen)]), 2)
+        * int("".join([str(x) for x in list(co2)]), 2),
     )
