@@ -33,10 +33,7 @@ class Line:
         return [Point(xi, yi) for xi, yi in zip(xs, ys)]
 
     def is_horizontal_or_vertical(self):
-        if self.p1.x == self.p2.x or self.p1.y == self.p2.y:
-            return True
-        else:
-            return False
+        return self.p1.x == self.p2.x or self.p1.y == self.p2.y
 
 
 class Grid:
