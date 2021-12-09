@@ -13,26 +13,26 @@ def map_to_numbers(input):
     possible_6s = [set(x) for x in input if len(x) == 6]
     possible_5s = [set(x) for x in input if len(x) == 5]
 
-    # we can get 9 by figuring out which one of length  6 has all the elements of 4
+    # we can get 9 by figuring out which one of length 6 has all the elements of 4
     lookup[9] = [x for x in possible_6s if x.issuperset(lookup[4])][0]
     possible_6s.remove(lookup[9])
 
-    # we can get 0 by figuring out which remaining ones with 6 has all elements of 1
+    # we can get 0 by figuring out which remaining ones of length 6 have all elements of 1
     lookup[0] = [x for x in possible_6s if x.issuperset(lookup[1])][0]
     possible_6s.remove(lookup[0])
 
-    # 6 is the only one with 6 remaining
+    # 6 is the only one of length 6 remaining
     lookup[6] = possible_6s[0]
 
-    # we can get 3 by figuring out which ones with 5 has all elements of 7
+    # we can get 3 by figuring out which one of length 5 has all elements of 7
     lookup[3] = [x for x in possible_5s if x.issuperset(lookup[7])][0]
     possible_5s.remove(lookup[3])
 
-    # we can get 5 by figuring out which remaining ones with 5 are contained within 9
+    # we can get 5 by figuring out which remaining ones of length 5 are contained within 9
     lookup[5] = [x for x in possible_5s if x.issubset(lookup[9])][0]
     possible_5s.remove(lookup[5])
 
-    # 2 is the only one with 5 remaining
+    # 2 is the only one of length 5 remaining
     lookup[2] = possible_5s[0]
 
     return {"".join(sorted(v)): k for k, v in lookup.items()}
