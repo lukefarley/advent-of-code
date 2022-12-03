@@ -7,7 +7,7 @@ def find_bad_item(rucksack):
         if item in second_compartment:
             return item
 
-    print("Badge not found")
+    print("Bad item not found")
     return ""
 
 
