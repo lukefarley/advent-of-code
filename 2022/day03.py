@@ -7,7 +7,8 @@ def find_bad_item(rucksack):
         if item in second_compartment:
             return item
 
-    return ValueError("Bad item not found")
+    print("Badge not found")
+    return ""
 
 
 def find_badge(group):
@@ -15,7 +16,8 @@ def find_badge(group):
         if item in group[1] and item in group[2]:
             return item
 
-    return ValueError("Badge not found")
+    print("Badge not found")
+    return ""
 
 
 if __name__ == "__main__":
