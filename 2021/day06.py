@@ -20,5 +20,4 @@ if __name__ == "__main__":
         lookup[i] = get_num_children(i, lookup)
 
     print("Part 1:", sum([lookup[80 + (6 - int(x))] for x in raw]) + len(raw))
-
     print("Part 2:", sum([lookup[256 + (6 - int(x))] for x in raw]) + len(raw))
