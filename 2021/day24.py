@@ -15,9 +15,9 @@ import random
 
 # after first block, x = 1, y = w1 + 3, z = w1 + 3
 
-# if (w1 + 3) % 26 + 11 == w1, then 
+# if (w1 + 3) % 26 + 11 == w1, then
 
-# 19, 
+# 19,
 # 20, x = 0
 # 21, x = w1 + 3
 # 22, x = (w1 + 3) % 26
@@ -29,7 +29,7 @@ import random
 # 28, y = 25
 # 29, y = 25
 # 30, y = 26
-# 31, z = (w1 + 3) * 26 
+# 31, z = (w1 + 3) * 26
 # 32, y = 0
 # 33, y = w2
 # 34, y = w2 + 12
@@ -38,7 +38,7 @@ import random
 
 # after second block, x = 1, y = w2 + 12, z = (w1 + 3) * 26 + (w2 + 12)
 
-# 37, 
+# 37,
 # 38, x = 0
 # 39, x = (w1 + 3) * 26 + (w2 + 12)
 # 40, x = ((w1 + 3) * 26 + (w2 + 12)) % 26
@@ -64,7 +64,7 @@ import random
 # 57, x = ((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9
 # 58, x = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) % 26
 # 59, z = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26
-# 60, x = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) % 26 - 6    
+# 60, x = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) % 26 - 6
 # 61, x = 1 if (w3 + 3 = w4) else 0
 # 62, x = 0 if (w3 + 3 = w4) else 1
 # 63, y = 0
@@ -78,7 +78,7 @@ import random
 # 71, y = 0
 # 72, z = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26
 
-# after fourth block, 
+# after fourth block,
 #   if w3 + 3 = w4,
 #        x = 0, y = 0, z = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26
 #   else
@@ -132,14 +132,14 @@ import random
 # 112, x = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26 * 26 + w5 + 2 // 26 % 26
 # 113, z = (((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26 * 26 + w5 + 2 // 26 // 26
 # 114, x = x = ((((w1 + 3) * 26 + (w2 + 12)) * 26 + w3 + 9) // 26 * 26 + w5 + 2 // 26) % 26 - 4
-# 115, 
+# 115,
 # 116,
 # 117,
 # 118,
 # 119,
 # 120,
-# 121, 
-# 122, 
+# 121,
+# 122,
 # 123,
 
 # ** w6 + 4 = w7
@@ -166,7 +166,7 @@ import random
 
 def evaluate(commands, input_vals, variables={}):
     if not variables:
-        variables = {'w': 0, 'x': 0, 'y': 0, 'z': 0}
+        variables = {"w": 0, "x": 0, "y": 0, "z": 0}
 
     iter_input_vals = iter(input_vals)
 
@@ -217,7 +217,7 @@ def evaluate(commands, input_vals, variables={}):
                 variables[first] = int(variables[first] == variables[second])
             else:
                 variables[first] = int(variables[first] == int(second))
-    
+
     return variables
 
 
@@ -229,20 +229,27 @@ if __name__ == "__main__":
     print(inputs_)
     evaluate(input_, inputs_)
 
-
     evaluate(input_, [int(x) for x in list(str(1958223344556677))])
 
     subroutines = []
     for i in range(0, 252, 18):
-        subroutines.append(input_[i:i+18])
+        subroutines.append(input_[i : i + 18])
 
-    s = (subroutines[0] + subroutines[1] + subroutines[2] + subroutines[3] + subroutines[4] + 
-            subroutines[5] + subroutines[6] + subroutines[7])
-            
-            #  + subroutines[7] +
-            # subroutines[8] + subroutines[9] + subroutines[10] + subroutines[11])
-            #  + subroutines[8] + subroutines[9] +
-            # subroutines[10] + subroutines[11] + subroutines[12])
+    s = (
+        subroutines[0]
+        + subroutines[1]
+        + subroutines[2]
+        + subroutines[3]
+        + subroutines[4]
+        + subroutines[5]
+        + subroutines[6]
+        + subroutines[7]
+    )
+
+    #  + subroutines[7] +
+    # subroutines[8] + subroutines[9] + subroutines[10] + subroutines[11])
+    #  + subroutines[8] + subroutines[9] +
+    # subroutines[10] + subroutines[11] + subroutines[12])
 
     # w3 + 3 = w4
     # w5 - 6 = w6

@@ -13,7 +13,9 @@ A-c
 A-b
 b-d
 A-end
-b-end""".split("\n")
+b-end""".split(
+    "\n"
+)
 
 # tst = """dc-end
 # HN-start
@@ -36,39 +38,43 @@ def parse(raw):
     for key_val in caves:
         cave_map[key_val[0]].append(key_val[1])
         cave_map[key_val[1]].append(key_val[0])
-    
+
     return cave_map
 
 
-def get_paths(cave_map, cave='start', current_path=[], all_paths=[]):
+def get_paths(cave_map, cave="start", current_path=[], all_paths=[]):
 
     current_path.append(cave)
 
-    if cave == 'end':
+    if cave == "end":
         # return current_path
         if current_path[0] == "start":
             return current_path
     else:
         next_caves = cave_map[cave]
-        if 'start' in next_caves:
-            next_caves.remove('start')
-        
+        if "start" in next_caves:
+            next_caves.remove("start")
+
         small_next_caves = [nc for nc in next_caves if nc.lower() == nc]
 
         small_caves_lookup = {}
         for sc in list(set([x for x in next_caves + current_path if x.lower() == x])):
             small_caves_lookup[sc] = current_path.count(sc)
 
-        if 'end' in small_next_caves:
-            small_next_caves.remove('end')
+        if "end" in small_next_caves:
+            small_next_caves.remove("end")
 
         for nc in next_caves:
             # if small_caves_rule == 1:
-            #     small_caves_check = 
+            #     small_caves_check =
             # else:
             #     small_caves_check = nc in small_next_caves and nc in current_path and any([x > 1 for x in list(small_caves_lookup.values())])
 
-            if nc in small_next_caves and nc in current_path and any([x > 1 for x in list(small_caves_lookup.values())]):
+            if (
+                nc in small_next_caves
+                and nc in current_path
+                and any([x > 1 for x in list(small_caves_lookup.values())])
+            ):
                 continue
             cp = current_path.copy()
             all_paths.append(get_paths(cave_map, nc, cp, all_paths))
@@ -82,9 +88,9 @@ if __name__ == "__main__":
         raw = [x.strip() for x in f.readlines()]
 
     cave_map = parse(raw)
-    paths = get_paths(cave_map, 'start')
-    
+    paths = get_paths(cave_map, "start")
+
     print("Part 1:", len([p for p in paths if isinstance(p[0], str)]))
-    
-    paths = get_paths(cave_map, 'start')
-    print("Part 2:",len([p for p in paths if isinstance(p[0], str)])) 
+
+    paths = get_paths(cave_map, "start")
+    print("Part 2:", len([p for p in paths if isinstance(p[0], str)]))

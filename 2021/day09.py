@@ -8,27 +8,26 @@ tst = [[int(y) for y in list(x)] for x in raw_tst.split("\n")]
 
 
 class Point:
-
     def __init__(self, x, y):
         self.x = x
         self.y = y
-                
+
         # if x > 0:
         #     self.left_neighbor = Point(x-1, y, grid)
         # if self.x < len(self.grid[0]) - 1:
         #     self.right_neighbor = Point(x+1, y, grid)
-    
+
     def left_neighbor(self):
-        return (self.x-1, self.y)
-    
+        return (self.x - 1, self.y)
+
     def right_neighbor(self):
-        return (self.x+1, self.y)
-    
+        return (self.x + 1, self.y)
+
     def above_neighbor(self):
-        return (self.x, self.y-1)
+        return (self.x, self.y - 1)
 
     def below_neighbor(self):
-        return (self.x, self.y+1)
+        return (self.x, self.y + 1)
 
     def is_lowpoint(self, grid):
         return (self.y, self.x) in find_lowpoints(grid)[1]
@@ -49,12 +48,13 @@ class Point:
 
 
 class Grid:
-
     def __init__(self, g):
         self.g = g
 
     def is_valid(self, p):
-        return (p.x >= 0) and (p.x < len(self.g[0])) and (p.y >= 0) and (p.y < len(self.g))
+        return (
+            (p.x >= 0) and (p.x < len(self.g[0])) and (p.y >= 0) and (p.y < len(self.g))
+        )
 
     def get(self, p):
         return self.g[p.y][p.x]
@@ -84,7 +84,7 @@ def find_basin(grid, lp, basin=set()):
     neighbors_to_check = [n for n in valid_neighbors if (n.x, n.y) not in basin]
     vals_to_check = [grid.get(n) for n in neighbors_to_check]
 
-    print("-"*50)
+    print("-" * 50)
     print(basin)
     print((lp.x, lp.y))
     print("Neighbors to check:", [(p.x, p.y) for p in neighbors_to_check])
@@ -96,7 +96,7 @@ def find_basin(grid, lp, basin=set()):
     if sum([grid.get(lp) <= v for v in vals_to_check]) == len(vals_to_check):
         # this point is also in the basin
         basin.add((lp.x, lp.y))
-        
+
         # recursively continue getting basin
         for n in neighbors_to_check:
             find_basin(grid, n, basin)
@@ -157,9 +157,8 @@ def find_basin(grid, lp, basin=set()):
 #     if bn.is_lowpoint(z):
 #         basin = basin + [bn]
 #         basin = basin + find_basin(z, bn)
-    
-#     return basin
 
+#     return basin
 
 
 def find_lowpoints(grid):
@@ -174,26 +173,26 @@ def find_lowpoints(grid):
             p = grid[j][i]
 
             if j > 0:
-                above_neighbor = grid[j-1][i]
+                above_neighbor = grid[j - 1][i]
             if j < (height - 1):
-                below_neighbor = grid[j+1][i]
+                below_neighbor = grid[j + 1][i]
             if i > 0:
-                left_neighbor = grid[j][i-1]
+                left_neighbor = grid[j][i - 1]
             if i < (width - 1):
-                right_neighbor = grid[j][i+1]
+                right_neighbor = grid[j][i + 1]
 
             if i + j == 0:
                 # top left corner
                 if p < right_neighbor and p < below_neighbor:
                     lowpoints.append(p)
                     position_of_lowpoints.append((j, i))
-            
+
             elif i == (width - 1) and j == 0:
                 # top right corner
                 if p < left_neighbor and p < below_neighbor:
                     lowpoints.append(p)
                     position_of_lowpoints.append((j, i))
-            
+
             elif i == 0 and j == (height - 1):
                 if p < right_neighbor and p < above_neighbor:
                     lowpoints.append(p)
@@ -226,24 +225,30 @@ def find_lowpoints(grid):
                     position_of_lowpoints.append((j, i))
 
             else:
-                if p < above_neighbor and p < left_neighbor and p < right_neighbor and p < below_neighbor:
+                if (
+                    p < above_neighbor
+                    and p < left_neighbor
+                    and p < right_neighbor
+                    and p < below_neighbor
+                ):
                     lowpoints.append(p)
                     position_of_lowpoints.append((j, i))
 
             # print(i, j, lowpoints)
 
     return lowpoints, position_of_lowpoints
-                
+
 
 def get_neighbors(x, y):
-    return [(x-1, y), (x+1, y), (x, y+1), (x, y-1)]
+    return [(x - 1, y), (x + 1, y), (x, y + 1), (x, y - 1)]
+
 
 def get_basin(lowpoint, grid):
     basin = [lowpoint]
 
     lp_num = lowpoint[0]
     lp_coords = lowpoint[1]
-    
+
     z = grid.copy()
     z[lp_coords[0]][lp_coords[1]] = 9
     new_lowpoints = find_lowpoints(z)
@@ -253,12 +258,11 @@ def get_basin(lowpoint, grid):
     basin.append(list(neighbors.intersection(new_lowpoint_coords)))
 
 
-
 if __name__ == "__main__":
     with open("data/day09.txt") as f:
         grid = [[int(y) for y in list(x.strip())] for x in f.readlines()]
-    
-    # tst = [[int(y) for y in list(x)] for x in raw_tst.split("\n")] 
+
+    # tst = [[int(y) for y in list(x)] for x in raw_tst.split("\n")]
     # lowpoints_tst = find_lowpoints(tst)
 
     lowpoints = find_lowpoints(grid)
@@ -269,11 +273,10 @@ if __name__ == "__main__":
     basins = []
     for lp in lowpoints[1]:
         lp_point = Point(lp[1], lp[0])
-        basin = find_basin(grid, lp_point, basin = set())
-        
+        basin = find_basin(grid, lp_point, basin=set())
+
         basins.append(basin)
 
     sorted([len(b) for b in basins])
 
-    bs = [find_basin(grid, Point(lp[1], lp[0]), basin = set()) for lp in lowpoints[1]]
-
+    bs = [find_basin(grid, Point(lp[1], lp[0]), basin=set()) for lp in lowpoints[1]]

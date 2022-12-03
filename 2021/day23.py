@@ -1,10 +1,10 @@
 #############
-#...........#
+# ...........#
 ###B#C#A#B###
-  #D#C#B#A#
-  #D#B#A#C#
-  #C#D#D#A#
-  #########
+# D#C#B#A#
+# D#B#A#C#
+# C#D#D#A#
+#########
 
 
 raw = """#############
@@ -45,23 +45,25 @@ def get_initial_state(raw):
 
     return state
 
+
 def get_neighbors(p):
 
     neighbors = []
 
     if p[1] == 0:
         if p[0] > 1:
-            neighbors.append((p[0]-1, p[1]))
+            neighbors.append((p[0] - 1, p[1]))
         if p[0] < 10:
-            neighbors.append((p[0]+1, p[1]))
+            neighbors.append((p[0] + 1, p[1]))
         if p[0] in [2, 4, 6, 8]:
             neighbors.append((p[0], p[1] + 1))
     else:
-        neighbors.append((p[0], p[1]-1))
+        neighbors.append((p[0], p[1] - 1))
         if p[1] < 3:
-            neighbors.append((p[0], p[1]+1))
+            neighbors.append((p[0], p[1] + 1))
 
     return neighbors
+
 
 def get_valid_moves(state):
     letters = {k: v for k, v in state.items() if v != "."}
@@ -84,63 +86,59 @@ for move in valid_moves:
     break
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#############
+# CD.......CA#
+###.#B#.#.###
+# D#B#.#A#
+# D#B#A#C#
+# C#B#D#A#
+#########
 
 #############
-#CD.......CA#
+# CC.......DA#
 ###.#B#.#.###
-  #D#B#.#A#
-  #D#B#A#C#
-  #C#B#D#A#
-  #########
+# D#B#.#A#
+# D#B#A#C#
+# C#B#D#A#
+#########
 
 #############
-#CC.......DA#
+# AD.......CC#
 ###.#B#.#.###
-  #D#B#.#A#
-  #D#B#A#C#
-  #C#B#D#A#
-  #########
-
-#############
-#AD.......CC#
-###.#B#.#.###
-  #D#B#.#A#
-  #D#B#A#C#
-  #C#B#D#A#
-  #########
+# D#B#.#A#
+# D#B#A#C#
+# C#B#D#A#
+#########
 
 
 import networkx as nx
 
 G = nx.Graph(
-    [(0, 0), (1, 0), (3, 0), (5, 0), (7, 0), (9, 0), (10, 0),
-     (2, 1), (2, 2), (2, 3), (2, 4),
-     (4, 1), (4, 2), (4, 3), (4, 4),
-     (6, 1), (6, 2), (6, 3), (6, 4),
-     (8, 1), (8, 2), (8, 3), (8, 4)]
+    [
+        (0, 0),
+        (1, 0),
+        (3, 0),
+        (5, 0),
+        (7, 0),
+        (9, 0),
+        (10, 0),
+        (2, 1),
+        (2, 2),
+        (2, 3),
+        (2, 4),
+        (4, 1),
+        (4, 2),
+        (4, 3),
+        (4, 4),
+        (6, 1),
+        (6, 2),
+        (6, 3),
+        (6, 4),
+        (8, 1),
+        (8, 2),
+        (8, 3),
+        (8, 4),
+    ]
 )
 
 G.add_edge((0, 0), (1, 0))
@@ -173,10 +171,6 @@ G.add_edge((9, 0), (8, 1))
 G.add_edge((8, 1), (8, 2))
 G.add_edge((8, 2), (8, 3))
 G.add_edge((8, 3), (8, 4))
-
-
-
-
 
 
 sum([6, 60, 3, 6000, 500, 7000, 30, 40, 700, 3, 8])

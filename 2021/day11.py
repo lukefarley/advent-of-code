@@ -22,6 +22,7 @@ class Octopus:
         self.energy = energy
         self.flashed = 0
         # self.flashed = 0
+
     # def step(self):
     #     if self.energy == 0:
     #         # if self.flashed == 0:
@@ -59,11 +60,11 @@ class Grid:
             if start_val == 9:
                 self.octopi[j][i].flashed = 1
                 self.num_flashes += 1
-                
+
                 # print(self.get_adjacent_positions(i, j))
                 for ii, jj in self.get_adjacent_positions(i, j):
                     self._step(ii, jj)
-            
+
     def step(self):
         for i in range(10):
             for j in range(10):
@@ -89,22 +90,38 @@ class Grid:
 
     def get_adjacent_positions(self, i, j):
         adjacent_positions = [
-            (i, j-1), (i, j+1), (i-1, j), (i+1,j),
-            (i-1, j-1), (i-1, j+1), (i+1, j-1), (i+1, j+1)
+            (i, j - 1),
+            (i, j + 1),
+            (i - 1, j),
+            (i + 1, j),
+            (i - 1, j - 1),
+            (i - 1, j + 1),
+            (i + 1, j - 1),
+            (i + 1, j + 1),
         ]
-        valid_adjacent_positions = [ap for ap in adjacent_positions if self.check_valid_pos(ap[0], ap[1])]
+        valid_adjacent_positions = [
+            ap for ap in adjacent_positions if self.check_valid_pos(ap[0], ap[1])
+        ]
 
         return valid_adjacent_positions
 
     def get_adjacent_energies(self, i, j):
 
         adjacent_positions = [
-            (i, j-1), (i, j+1), (i-1, j), (i+1,j),
-            (i-1, j-1), (i-1, j+1), (i+1, j-1), (i+1, j+1)
+            (i, j - 1),
+            (i, j + 1),
+            (i - 1, j),
+            (i + 1, j),
+            (i - 1, j - 1),
+            (i - 1, j + 1),
+            (i + 1, j - 1),
+            (i + 1, j + 1),
         ]
         # print(adjacent_positions)
 
-        valid_adjacent_positions = [ap for ap in adjacent_positions if self.check_valid_pos(ap[0], ap[1])]
+        valid_adjacent_positions = [
+            ap for ap in adjacent_positions if self.check_valid_pos(ap[0], ap[1])
+        ]
         # print(valid_adjacent_positions)
 
         adjacent_energies = []
@@ -131,7 +148,7 @@ for _ in range(100):
 if __name__ == "__main__":
     with open("data/day11.txt") as f:
         raw = [x.strip() for x in f.readlines()]
-    
+
     g = Grid(raw)
     for k in range(500):
         for i in range(10):
@@ -140,6 +157,8 @@ if __name__ == "__main__":
         g.step()
 
         if k > 100:
-            if sum([o.flashed for o in functools.reduce(operator.add, g.octopi)]) == 100:
+            if (
+                sum([o.flashed for o in functools.reduce(operator.add, g.octopi)])
+                == 100
+            ):
                 print(k)
-            

@@ -1,5 +1,6 @@
 starting_pos = {1: 4, 2: 8}
 
+
 def get_round_score(current_pos, rolls):
     s = (current_pos + sum(rolls)) % 10
     if s == 0:
@@ -25,8 +26,7 @@ def part1(p1_start, p2_start):
         p1_score = get_round_score(p1_score, p1_roll)
         p1_total += p1_score
         if p1_total >= 1000:
-            return ((num_rolls - 3) * p2_total)
-            
+            return (num_rolls - 3) * p2_total
 
         p2_score = get_round_score(p2_score, p2_roll)
         p2_total += p2_score
@@ -34,40 +34,36 @@ def part1(p1_start, p2_start):
         if p2_total >= 1000:
             return num_rolls * p1_total
 
+
 def part2(p1_start, p2_start):
     pass
+
 
 if __name__ == "__main__":
     print("Part 1:", part1(4, 9))
 
     4
     [5, 5, 5], [5, 6, 5], [5, 5, 6], [5, 6, 6], [5, 7, 5], [5, 5, 7], [5, 7, 7]
-    [
-        [6, 7, 8], [7, 8, 9], [8, 9 , 10]
-    ]
+    [[6, 7, 8], [7, 8, 9], [8, 9, 10]]
 
     8
     [9, 10, 1]
 
-    [
-        [10, 1, 2], [1, 2, 3], [2, 3, 4]
-    ]
+    [[10, 1, 2], [1, 2, 3], [2, 3, 4]]
 
     [
-        [[1, 2, 3], [2, 3, 4], [3, 4, 5]], 
-        [[2, 3, 4], [3, 4, 5], [4, 5, 6]], 
-        [[3, 4, 5], [4, 5, 6], [5, 6, 7]]
+        [[1, 2, 3], [2, 3, 4], [3, 4, 5]],
+        [[2, 3, 4], [3, 4, 5], [4, 5, 6]],
+        [[3, 4, 5], [4, 5, 6], [5, 6, 7]],
     ]
-    
 
     11, 12, 13, 21, 22, 23, 31, 32, 33
-    
+
     111,
-    [112, 121, 211], 
+    [112, 121, 211],
     [113, 131, 311],
     [122, 212, 221],
     222,
     [223, 232, 322],
     333,
     [323, 332, 233]
-    

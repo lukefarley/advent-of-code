@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
-tst = [[[[[9,8],1],2],3],4]
+tst = [[[[[9, 8], 1], 2], 3], 4]
+
 
 @dataclass
 class Pair:
@@ -12,7 +13,7 @@ class Pair:
         self.left = left
         self.right = right
         self.depth = depth
-        
+
     def __str__(self):
         return f"({self.left}, {self.right})"
 
@@ -33,6 +34,7 @@ def parse(x, depth=0):
         depth += 1
         return Pair(parse(x[0], depth), parse(x[1], depth), depth)
 
+
 p = parse(tst)
 
 
@@ -50,17 +52,12 @@ def traverse(p):
         print("explode")
 
 
-
-
 while isinstance(p.left, Pair) or isinstance(p.right, Pair):
     if p.depth >= 4:
         if isinstance(p.left, Pair):
             print("explode")
         if isinstance(p.right, Pair):
             print("explode")
-
-    
-
 
 
 # def parse(x):
@@ -70,7 +67,3 @@ while isinstance(p.left, Pair) or isinstance(p.right, Pair):
 #     while listx:
 #         if listx[i] == "[":
 #             S.append(listx[i])
-
-
-
-    

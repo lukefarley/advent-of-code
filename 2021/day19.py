@@ -139,27 +139,27 @@ tst = """--- scanner 0 ---
 30,-46,-14"""
 
 tst = [[y for y in x.split("\n") if y != ""] for x in re.split("--- .+ ---\n", tst)[1:]]
-tst = [[(int(x.split(",")[0]), int(x.split(",")[1]), int(x.split(",")[2])) for x in y] for y in tst]
+tst = [
+    [(int(x.split(",")[0]), int(x.split(",")[1]), int(x.split(",")[2])) for x in y]
+    for y in tst
+]
 
 scanners = {}
 for i, beacons in enumerate(tst):
     scanners[i] = beacons
 
 
-R = np.array([[1, 0, 0],
-     [0, 0, -1],
-     [0, 1, 0]])
+R = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
+
 
 def get_all_possible_configurations(beacons):
     possibilities = []
 
-    R = np.array([[1, 0, 0],
-                  [0, 0, -1],
-                  [0, 1, 0]])
+    R = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
 
     rotate90 = R @ p
     rotate180 = R @ (R @ p)
-    rotate270 = R (R @ (R @ p))
+    rotate270 = R(R @ (R @ p))
 
     p1 = np.array([5, 6, -4])
 

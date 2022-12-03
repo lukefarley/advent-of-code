@@ -62,10 +62,11 @@ for i, c in enumerate(coords[:-2]):
 (-49, -5)
 (-32, -23)
 
+
 def get_num_overlap(p1x1, p1x2, p2x1, p2x2):
     assert p1x1 <= p1x2 and p2x1 <= p2x2
 
-    total_num = max(p1x1, p1x2, p2x1, p2x2) - min(p1x1, p1x2, p2x1, p2x2) +  + 1
+    total_num = max(p1x1, p1x2, p2x1, p2x2) - min(p1x1, p1x2, p2x1, p2x2) + +1
 
     if p1x1 > 0 and p1x2 > 0 and p2x1 <= 0 and p2x2 <= 0:
         return 0, total_num
@@ -83,6 +84,7 @@ def get_num_overlap(p1x1, p1x2, p2x1, p2x2):
         num_non_intersect = total_num - num_intersect
         return num_intersect, num_non_intersect
 
+
 def get_num_overlap2(s1, s2, on=1):
 
     x1min, x1max = s1[0]
@@ -98,15 +100,13 @@ def get_num_overlap2(s1, s2, on=1):
         return [
             (min(x1min, x2min), max(x1max, x2max)),
             (min(y1min, y2min), max(y1max, y2max)),
-            (min(z1min, z2min), max(z1max, z2max))
+            (min(z1min, z2min), max(z1max, z2max)),
         ]
     else:
         # if tuning off, return s1 difference s2
         pass
 
     # if turning off, we need to know how many points are in s2 that are not in s1
-
-
 
     num_x_overlap, num_x_non_overlap = get_num_overlap(x1min, x1max, x2min, x2max)
     num_y_overlap, num_y_non_overlap = get_num_overlap(y1min, y1max, y2min, y2max)
@@ -132,8 +132,7 @@ coords = [
 
 num_on = 0
 num_on = (
-    (coords[0][0][1] - coords[0][0][0] + 1) *
-    (coords[0][1][1] - coords[0][1][0] + 1) *
-    (coords[0][2][1] - coords[0][2][0] + 1)
+    (coords[0][0][1] - coords[0][0][0] + 1)
+    * (coords[0][1][1] - coords[0][1][0] + 1)
+    * (coords[0][2][1] - coords[0][2][0] + 1)
 )
-

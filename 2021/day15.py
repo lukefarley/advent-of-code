@@ -28,30 +28,32 @@ from collections import deque
 
 def get_new_grid(grid):
     grid_dim = len(grid)
-    new_grid = [[0 for _ in range(grid_dim*5)] for _ in range(grid_dim*5)]
-    
+    new_grid = [[0 for _ in range(grid_dim * 5)] for _ in range(grid_dim * 5)]
+
     for i in range(grid_dim):
         for j in range(grid_dim):
             new_grid[j][i] = grid[j][i]
 
     for i in range(grid_dim):
-        for j in range(grid_dim, grid_dim*5):
+        for j in range(grid_dim, grid_dim * 5):
             new_val = grid[j % grid_dim][i] + (j // grid_dim)
             new_val = new_val % 9
             new_val = 9 if new_val == 0 else new_val
             new_grid[j][i] = new_val
-    
-    for i in range(grid_dim, grid_dim*5):
+
+    for i in range(grid_dim, grid_dim * 5):
         for j in range(grid_dim):
             new_val = grid[j][i % grid_dim] + (i // grid_dim)
             new_val = new_val % 9
             new_val = 9 if new_val == 0 else new_val
             new_grid[j][i] = new_val
 
-    for i in range(grid_dim, grid_dim*5):
-        for j in range(grid_dim, grid_dim*5):
+    for i in range(grid_dim, grid_dim * 5):
+        for j in range(grid_dim, grid_dim * 5):
             if new_grid[j][i] == 0:
-                new_val = new_grid[j % grid_dim][i % grid_dim] + (i // grid_dim + j // grid_dim)
+                new_val = new_grid[j % grid_dim][i % grid_dim] + (
+                    i // grid_dim + j // grid_dim
+                )
                 new_val = new_val % 9
                 new_val = 9 if new_val == 0 else new_val
                 new_grid[j][i] = new_val
@@ -64,13 +66,13 @@ def get_adjacent_nodes(node, max_dim=10):
     y = node[1]
     adjacent = []
     if x > 0:
-        adjacent.append((x-1, y))
-    if x < max_dim-1:
-        adjacent.append((x+1, y))
+        adjacent.append((x - 1, y))
+    if x < max_dim - 1:
+        adjacent.append((x + 1, y))
     if y > 0:
-        adjacent.append((x, y-1))
-    if y < max_dim -1:
-        adjacent.append((x, y+1))
+        adjacent.append((x, y - 1))
+    if y < max_dim - 1:
+        adjacent.append((x, y + 1))
     return adjacent
 
 
@@ -93,7 +95,7 @@ def fancy_bfs(root, grid):
         if u != (0, 0):
             risk += grid[u[1]][u[0]]
 
-        if u == (len(grid)-1, len(grid)-1):
+        if u == (len(grid) - 1, len(grid) - 1):
             print("-" * 50)
             print("Reached:", u, "having used", risk)
             print("Risk to leave here is", grid[u[1]][u[0]])
@@ -105,13 +107,18 @@ def fancy_bfs(root, grid):
                 risk_lookup[v] = risk
                 Q.append((v, risk, path))
             else:
-                if risk < risk_lookup[v]:            # check if we've reached this node before using less risk, if we have, don't bother adding it's neighbors to the queue
+                if (
+                    risk < risk_lookup[v]
+                ):  # check if we've reached this node before using less risk, if we have, don't bother adding it's neighbors to the queue
                     # last_best = risk_lookup[v]
-                    risk_lookup[v] = risk            # if not, update the risk lookup with the new risk value we reached this node with
+                    risk_lookup[
+                        v
+                    ] = risk  # if not, update the risk lookup with the new risk value we reached this node with
                     # Q = deque([e for e in Q if not [ep for ep in e[2] if (ep[0] == v and ep[1] >= last_best)]])
                     Q.append((v, risk))
 
     return results
+
 
 # implement dijkstra's algorithm -- takes ~20 seconds for part 2
 def dijkstra(root, grid):
@@ -128,22 +135,26 @@ def dijkstra(root, grid):
         if u != (0, 0):
             risk += grid[u[1]][u[0]]
 
-        if u == (len(grid)-1, len(grid)-1):
+        if u == (len(grid) - 1, len(grid) - 1):
             print("-" * 50)
             print("Reached:", u, "having used", risk)
             print("Risk to leave here is", grid[u[1]][u[0]])
             return risk
 
         for v in get_adjacent_nodes(u, len(grid)):
-            if v not in risk_lookup:                 # check if we've visited this node before
+            if v not in risk_lookup:  # check if we've visited this node before
                 risk_lookup[v] = risk
                 Q.append((v, risk))
             else:
-                if risk < risk_lookup[v]:            # check if we've reached this node before using less risk, if we have, don't bother adding it's neighbors to the queue
-                    risk_lookup[v] = risk            # if not, update the risk lookup with the new risk value we reached this node with
+                if (
+                    risk < risk_lookup[v]
+                ):  # check if we've reached this node before using less risk, if we have, don't bother adding it's neighbors to the queue
+                    risk_lookup[
+                        v
+                    ] = risk  # if not, update the risk lookup with the new risk value we reached this node with
                     Q.append((v, risk))
 
-        Q = deque(sorted(Q, key = lambda x: x[1]))
+        Q = deque(sorted(Q, key=lambda x: x[1]))
 
 
 if __name__ == "__main__":
