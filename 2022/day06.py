@@ -1,5 +1,5 @@
 def find_first_group_with_distinct_chars(buffer, n):
-    for i in range(len(buffer) - n):
+    for i in range(len(buffer) - n + 1):
         group = buffer[i : i + n]
         unique_chars = "".join(set(group))
 
