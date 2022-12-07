@@ -49,7 +49,7 @@ if __name__ == "__main__":
         raw_stacks, raw_instructions = f.read().split("\n\n")
 
     stacks = read_stacks(raw_stacks)
-    instructions = read_instructions(raw_instructions)
+    instructions = read_instructions(raw_instructions)  
 
     for instruction in instructions:
         stacks = move9000(stacks, instruction)

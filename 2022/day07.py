@@ -8,7 +8,7 @@ class Directory:
         self.files = files
 
     def __repr__(self):
-        return f"Directory({self.name}, {self.parent_ID}, {', '.join([str(x) for x in self.children_IDs])}, {', '.join([str(x) for x in self.files])})"
+        return f"Directory(Name: {self.name}, ID: {self.ID}, Parent ID: {self.parent_ID}, Children IDs: {[str(x) for x in self.children_IDs]}, Files: {[str(x) for x in self.files]})"
 
 
 class File:
