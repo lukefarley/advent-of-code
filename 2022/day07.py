@@ -72,19 +72,20 @@ def get_size_of_directory_to_delete(
     return sorted(relevant_dirs.values())[0]
 
 
-with open("data/day07.txt") as f:
-    terminal_output = [x.strip() for x in f.readlines()]
+if __name__ == "__main__":
+    with open("data/day07.txt") as f:
+        terminal_output = [x.strip() for x in f.readlines()]
 
-    directories = get_directories(terminal_output)
-    directory_sizes = dict(
-        zip(
-            list(directories.keys()),
-            [get_directory_size(directories, id) for id in directories],
+        directories = get_directories(terminal_output)
+        directory_sizes = dict(
+            zip(
+                list(directories.keys()),
+                [get_directory_size(directories, id) for id in directories],
+            )
         )
-    )
 
-    print(
-        "Part 1:",
-        sum([dsize for dsize in list(directory_sizes.values()) if dsize <= 100000]),
-    )
-    print("Part 2:", get_size_of_directory_to_delete(directory_sizes))
+        print(
+            "Part 1:",
+            sum([dsize for dsize in list(directory_sizes.values()) if dsize <= 100000]),
+        )
+        print("Part 2:", get_size_of_directory_to_delete(directory_sizes))
