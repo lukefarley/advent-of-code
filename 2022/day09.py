@@ -33,11 +33,12 @@ def move_tail(head_pos, tail_pos):
     if abs(xdif) >= 2 or abs(ydif) >= 2:
         if abs(xdif) >= 2:
             tail_x += sign(xdif)
+        elif abs(xdif) == 1:
+            tail_x = head_x
+
         if abs(ydif) >= 2:
             tail_y += sign(ydif)
-        if abs(xdif) == 1:
-            tail_x = head_x
-        if abs(ydif) == 1:
+        elif abs(ydif) == 1:
             tail_y = head_y
 
     return (tail_x, tail_y)
