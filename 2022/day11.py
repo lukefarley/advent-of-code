@@ -14,7 +14,7 @@ def get_remainders(item):
         23: item % 23,
     }
 
-
+    
 def make_function(string_operation):
     return eval("lambda old:" + string_operation)
 
