@@ -55,15 +55,15 @@ def search_row(sensors, beacons, rownum):
             sensors[i], dist, rownum, xrange=(0, 4000000)
         )
 
-    z = sorted(list({k: v for k, v in min_max.items() if v}.values()))
+    sensor_ranges = sorted(list({k: v for k, v in min_max.items() if v}.values()))
 
-    next_start = z[0][0][0]
+    next_start = sensor_ranges[0][0][0]
     assert next_start == 0
-    covered_up_to = z[0][1][0]
+    covered_up_to = sensor_ranges[0][1][0]
 
-    for i in range(len(z) - 1):
-        end = z[i][1][0]
-        next_start = z[i + 1][0][0]
+    for i in range(len(sensor_ranges) - 1):
+        end = sensor_ranges[i][1][0]
+        next_start = sensor_ranges[i + 1][0][0]
 
         if end == 4000000:
             break
