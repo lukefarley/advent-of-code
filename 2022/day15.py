@@ -5,22 +5,6 @@ def get_distance_between(sensor, beacon):
     return abs(sensor[0] - beacon[0]) + abs(sensor[1] - beacon[1])
 
 
-def get_points_within_dist(sensor, dist, yval):
-
-    x = sensor[0]
-    y = sensor[1]
-
-    ydist = abs(y - yval)
-
-    if ydist > dist:
-        return []
-    else:
-        min_point = (x - (dist - ydist), yval)
-        max_point = (x + (dist - ydist), yval)
-
-        return [min_point, max_point]
-
-
 def get_min_max_non_beacon_point_in_row(sensor, dist, rownum, xrange=None):
 
     x = sensor[0]
