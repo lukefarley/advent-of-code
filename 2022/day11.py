@@ -14,7 +14,7 @@ def get_remainders(item):
         23: item % 23,
     }
 
-    
+
 def make_function(string_operation):
     return eval("lambda old:" + string_operation)
 
@@ -33,7 +33,7 @@ class Monkey:
         operation,
         test_div,
         monkey_if_true,
-        monkey_if_false
+        monkey_if_false,
     ):
         self.id = monkey_id
         self.items = items
@@ -49,9 +49,9 @@ class Monkey:
         }
         self.num_inspections = 0
 
-
     def __iter__(self):
         return iter(self)
+
 
 def parse_monkey_desc(monkey_desc):
     monkey_desc = monkey_desc.split("\n")
@@ -76,7 +76,7 @@ def parse_monkey_desc(monkey_desc):
         operation=operation,
         test_div=test_div,
         monkey_if_true=monkey_if_true,
-        monkey_if_false=monkey_if_false
+        monkey_if_false=monkey_if_false,
     )
 
 
