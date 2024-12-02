@@ -1,7 +1,5 @@
 def eval_report(r):
-    diffs = []
-    for i in range(len(r) - 1):
-        diffs.append(r[i + 1] - r[i])
+    diffs = [r[i + 1] - r[i] for i in range(len(r) - 1)]
 
     increasing = all([3 >= d >= 1 for d in diffs])
     decreasing = all([-1 >= d >= -3 for d in diffs])
