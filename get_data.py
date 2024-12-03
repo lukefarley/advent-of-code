@@ -11,9 +11,17 @@ today = date.today()
 this_year = today.year
 this_day = today.day
 
-parser = argparse.ArgumentParser(description="Get puzzle input for a particular day and write it to a text file.")
-parser.add_argument("--year", help="Year to fetch data for. Defaults to current year.", default=this_year)
-parser.add_argument("--day", help="Day to fetch data for. Defaults to current day.", default=this_day)
+parser = argparse.ArgumentParser(
+    description="Get puzzle input for a particular day and write it to a text file."
+)
+parser.add_argument(
+    "--year",
+    help="Year to fetch data for. Defaults to current year.",
+    default=this_year,
+)
+parser.add_argument(
+    "--day", help="Day to fetch data for. Defaults to current day.", default=this_day
+)
 args = parser.parse_args()
 
 year = args.year
